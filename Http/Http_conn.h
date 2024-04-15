@@ -5,11 +5,26 @@
 #include <sys/stat.h>
 #include <sys/epoll.h>
 #include <string.h>
+#include <fcntl.h>
+#include <unistd.h>
+#include <iostream>
+#include <map>
+#include <mmap.h>
+using namespace std;
 #include "../CGIMysql/Sql_connection_pool.h"
+#include "../Lock/Lockers.h"
+//  #define edge_TRIGGERED //边缘触发 非阻塞
+#define level_TRIGGERED // 水平触发 阻塞
+
+const char *doc_root = "/home/xgwhite/Templates/MyTinyWebServer/Root";
 
 static const int FILENAME_LEN = 200;
 static const int READ_BUFFER_SIZE = 2048;
 static const int WRITE_BUFFER_SIZE = 1024;
+
+// a map to store the username and password
+map<string, string> users_map;
+Locker m_lock;
 
 /**
  * @brief HTTP请求方法枚举
@@ -89,7 +104,8 @@ private:
     HTTP_CODE parse_headers(char *text);
     HTTP_CODE parse_content(char *text);
     HTTP_CODE do_request();
-    char *get_line() { return m_read_buf + m_start_line; };
+
+    char *get_line();
 
     LINE_STATUS parse_line();
 
@@ -111,8 +127,10 @@ public:
 private:
     int m_sockfd;
     sockaddr_in m_address;
+
     char m_read_buf[READ_BUFFER_SIZE];
-    int m_read_idx;
+    int m_read_idx; // m_read_idx --> the first empty position in m_read_buf[]
+
     int m_checked_idx;
     int m_start_line;
     char m_write_buf[WRITE_BUFFER_SIZE];
@@ -134,4 +152,5 @@ private:
     int bytes_to_send;
     int bytes_have_send;
 };
+
 #endif

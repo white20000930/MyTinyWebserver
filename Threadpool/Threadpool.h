@@ -23,7 +23,7 @@ private:
     int m_max_requests;
     pthread_t *m_threads;       // Array of thread pool, size = m_thread_number
     std::list<T *> m_workqueue; // Request queue
-    Locker m_queuelocker;       // to ensure only 1 thread can operate on m_workqueue
+    Locker m_queuelocker;       // to ensure only 1 thing can operate on m_workqueue
     Sem m_queuestate;           //~~~~~~~~~~~~~
     bool m_stop;
     Connection_pool *m_connPool; // Database connection pool
@@ -117,6 +117,6 @@ void Threadpool<T>::run()
 
         // connectionRAII mysqlcon(&request->mysql, m_connPool);
 
-        // request->process();
+        request->process();
     }
 }
