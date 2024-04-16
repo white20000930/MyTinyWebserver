@@ -145,7 +145,61 @@ bool Http_conn::read_once()
 
 bool Http_conn::write()
 {
-    return false;
+    int temp = 0;
+
+    if (this->bytes_to_send == 0)
+    {
+        modfd(m_epollfd, this->m_sockfd, EPOLLIN);
+        init();
+        return true;
+    }
+
+    while (1)
+    {
+        temp = writev(this->m_sockfd, this->m_iv, this->m_iv_count); // if error ,temp < 0 , error code is stored in errno
+
+        if (temp < 0)
+        {
+            if (errno == EAGAIN) // writev
+            {
+                modfd(m_epollfd, this->m_sockfd, EPOLLOUT);
+                return true;
+            }
+            unmap();
+            return false;
+        }
+
+        this->bytes_have_send += temp;
+        this->bytes_to_send -= temp;
+
+        if (this->bytes_have_send >= this->m_iv[0].iov_len)
+        {
+            this->m_iv[0].iov_len = 0;
+            this->m_iv[1].iov_base = this->m_file_address + (this->bytes_have_send - this->m_write_idx);
+            this->m_iv[1].iov_len = this->bytes_to_send;
+        }
+        else
+        {
+            this->m_iv[0].iov_base = this->m_write_buf + this->bytes_have_send;
+            this->m_iv[0].iov_len = this->m_write_idx - this->bytes_have_send;
+        }
+
+        if (this->bytes_to_send <= 0)
+        {
+            unmap();
+            modfd(m_epollfd, this->m_sockfd, EPOLLIN);
+
+            if (this->m_linger)
+            {
+                init();
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+    }
 }
 
 sockaddr_in *Http_conn::get_address()
@@ -155,6 +209,7 @@ sockaddr_in *Http_conn::get_address()
 
 void Http_conn::initmysql_result(Connection_pool *connPool)
 {
+    
 }
 
 void Http_conn::init()

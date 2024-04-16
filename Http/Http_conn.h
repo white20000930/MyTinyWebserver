@@ -9,7 +9,8 @@
 #include <unistd.h>
 #include <iostream>
 #include <map>
-#include <mmap.h>
+#include <sys/mman.h>
+#include <sys/uio.h>
 using namespace std;
 #include "../CGIMysql/Sql_connection_pool.h"
 #include "../Lock/Lockers.h"
@@ -17,6 +18,17 @@ using namespace std;
 #define level_TRIGGERED // 水平触发 阻塞
 
 const char *doc_root = "/home/xgwhite/Templates/MyTinyWebServer/Root";
+
+// some HTTP status information
+const char *ok_200_title = "OK";
+const char *error_400_title = "Bad Request";
+const char *error_400_form = "Your request has bad syntax or is inherently impossible to staisfy.\n";
+const char *error_403_title = "Forbidden";
+const char *error_403_form = "You do not have permission to get file form this server.\n";
+const char *error_404_title = "Not Found";
+const char *error_404_form = "The requested file was not found on this server.\n";
+const char *error_500_title = "Internal Error";
+const char *error_500_form = "There was an unusual problem serving the request file.\n";
 
 static const int FILENAME_LEN = 200;
 static const int READ_BUFFER_SIZE = 2048;
@@ -103,6 +115,7 @@ private:
     HTTP_CODE parse_request_line(char *text);
     HTTP_CODE parse_headers(char *text);
     HTTP_CODE parse_content(char *text);
+
     HTTP_CODE do_request();
 
     char *get_line();
@@ -110,6 +123,7 @@ private:
     LINE_STATUS parse_line();
 
     void unmap();
+
     bool add_response(const char *format, ...);
     bool add_content(const char *content);
     bool add_status_line(int status, const char *title);
@@ -133,8 +147,10 @@ private:
 
     int m_checked_idx;
     int m_start_line;
+
     char m_write_buf[WRITE_BUFFER_SIZE];
     int m_write_idx;
+
     CHECK_STATE m_check_state;
     METHOD m_method;
     char m_real_file[FILENAME_LEN];

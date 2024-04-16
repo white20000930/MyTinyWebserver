@@ -94,7 +94,7 @@ public:
         pthread_cond_destroy(&m_cond);
     };
 
-    bool wait(pthread_mutex_t *m_mutex)
+    bool wait(pthread_mutex_t *m_mutex)  //if wait successfully, return true
     {
         return pthread_cond_wait(&m_cond, m_mutex) == 0;
     }
