@@ -1,5 +1,34 @@
 #include "Http_conn.h"
 
+//  #define edge_TRIGGERED //边缘触发 非阻塞
+#define level_TRIGGERED // 水平触发 阻塞
+
+using namespace std;
+const char *doc_root = "/home/xgwhite/Templates/MyTinyWebserver/Root";
+
+// some HTTP status information
+const char *ok_200_title = "OK";
+const char *error_400_title = "Bad Request";
+const char *error_400_form = "Your request has bad syntax or is inherently impossible to staisfy.\n";
+const char *error_403_title = "Forbidden";
+const char *error_403_form = "You do not have permission to get file form this server.\n";
+const char *error_404_title = "Not Found";
+const char *error_404_form = "The requested file was not found on this server.\n";
+const char *error_500_title = "Internal Error";
+const char *error_500_form = "There was an unusual problem serving the request file.\n";
+
+// a map to store the username and password
+map<string, string> users_map;
+Locker m_lock;
+
+int setnonblocking(int fd)
+{
+    int old_option = fcntl(fd, F_GETFL);
+    int new_option = old_option | O_NONBLOCK;
+    fcntl(fd, F_SETFL, new_option);
+    return old_option;
+}
+
 int addfd(int epollfd, int fd, bool one_shot)
 {
     epoll_event event;
@@ -43,14 +72,6 @@ int removefd(int epollfd, int fd)
     epoll_ctl(epollfd, EPOLL_CTL_DEL, fd, 0);
     close(fd);
     return 0;
-}
-
-int setnonblocking(int fd)
-{
-    int old_option = fcntl(fd, F_GETFL);
-    int new_option = old_option | O_NONBLOCK;
-    fcntl(fd, F_SETFL, new_option);
-    return old_option;
 }
 
 /*
@@ -209,7 +230,28 @@ sockaddr_in *Http_conn::get_address()
 
 void Http_conn::initmysql_result(Connection_pool *connPool)
 {
-    
+
+    MYSQL *mysql = NULL;
+    ConnectionRAII mysqlcon(&mysql, connPool);
+
+    cout << "before mysql_query" << endl;
+    if (mysql_query(mysql, "SELECT username,passwd FROM user"))
+    {
+        LOG_ERROR("SELECT error:%s\n", mysql_error(mysql));
+    }
+    cout << "after mysql_query" << endl;
+    MYSQL_RES *result = mysql_store_result(mysql);
+
+    int num_fields = mysql_num_fields(result);
+
+    MYSQL_FIELD *fields = mysql_fetch_fields(result);
+
+    while (MYSQL_ROW row = mysql_fetch_row(result))
+    {
+        string temp1(row[0]);
+        string temp2(row[1]);
+        users_map[temp1] = temp2;
+    }
 }
 
 void Http_conn::init()
@@ -234,7 +276,7 @@ void Http_conn::init()
     memset(m_real_file, '\0', FILENAME_LEN);
 }
 
-HTTP_CODE Http_conn::process_read()
+Http_conn::HTTP_CODE Http_conn::process_read()
 {
     LINE_STATUS line_status = LINE_OK;
     HTTP_CODE ret = NO_REQUEST;
@@ -245,8 +287,8 @@ HTTP_CODE Http_conn::process_read()
         text = this->get_line(); // get the first line that has not been checked
         this->m_start_line = this->m_checked_idx;
 
-        // LOG_INFO("%s", text);
-        // Log::get_instance()->flush();
+        LOG_INFO("%s", text);
+        Log::get_instance()->flush();
 
         switch (this->m_check_state)
         {
@@ -356,7 +398,7 @@ bool Http_conn::process_write(HTTP_CODE ret)
     return true;
 }
 
-HTTP_CODE Http_conn::parse_request_line(char *text)
+Http_conn::HTTP_CODE Http_conn::parse_request_line(char *text)
 {
     // Job: obtain the request method, URL and HTTP version
 
@@ -422,7 +464,7 @@ HTTP_CODE Http_conn::parse_request_line(char *text)
     return NO_REQUEST;
 }
 
-HTTP_CODE Http_conn::parse_headers(char *text)
+Http_conn::HTTP_CODE Http_conn::parse_headers(char *text)
 {
 
     if (text[0] == '\0')
@@ -462,7 +504,7 @@ HTTP_CODE Http_conn::parse_headers(char *text)
     return NO_REQUEST;
 }
 
-HTTP_CODE Http_conn::parse_content(char *text)
+Http_conn::HTTP_CODE Http_conn::parse_content(char *text)
 {
     if (this->m_read_idx >= (this->m_content_length + this->m_checked_idx))
     {
@@ -473,7 +515,7 @@ HTTP_CODE Http_conn::parse_content(char *text)
     return NO_REQUEST;
 }
 
-HTTP_CODE Http_conn::do_request()
+Http_conn::HTTP_CODE Http_conn::do_request()
 {
     strcpy(this->m_real_file, doc_root); // directory of websites
     int len = strlen(doc_root);
@@ -621,7 +663,7 @@ char *Http_conn::get_line()
     return this->m_read_buf + this->m_start_line;
 }
 
-LINE_STATUS Http_conn::parse_line()
+Http_conn::LINE_STATUS Http_conn::parse_line()
 {
     // Job: update m_checked_idx; return LINE_XX
     // Attention: m_checked_idx -- the first one that has not been checked
@@ -687,8 +729,8 @@ bool Http_conn::add_response(const char *format, ...)
     }
     this->m_write_idx += length;
     va_end(arg_list);
-    /*LOG_INFO("request:%s", m_write_buf);
-    Log::get_instance()->flush();*/
+    LOG_INFO("request:%s", m_write_buf);
+    Log::get_instance()->flush();
 
     return true;
 }

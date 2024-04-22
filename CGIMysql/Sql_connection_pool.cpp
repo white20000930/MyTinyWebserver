@@ -15,7 +15,7 @@ Connection_pool::~Connection_pool()
 MYSQL *Connection_pool::GetConnection()
 {
     MYSQL *con = NULL;
-    if (connList.empty())
+    if (0 == connList.size())
     {
         return NULL;
     }
@@ -91,9 +91,10 @@ void Connection_pool::init(string url, string User, string PassWord, string Data
     this->DatabaseName = DataBaseName;
 
     this->lock.lock();
-    for (int i = 0; i < this->MaxConn; i++)
+    for (int i = 0; i < MaxConn; i++)
     {
         MYSQL *con = NULL;
+
         con = mysql_init(con);
 
         if (con == NULL)
@@ -101,14 +102,17 @@ void Connection_pool::init(string url, string User, string PassWord, string Data
             cout << "mysql_init error" << endl;
             exit(1);
         }
+
         con = mysql_real_connect(con, url.c_str(), User.c_str(), PassWord.c_str(), DataBaseName.c_str(), Port, NULL, 0);
 
         if (con == NULL)
         {
-            cout << "mysql_real_connect error" << endl;
+            cout << "Error: " << mysql_error(con);
             exit(1);
         }
+
         this->connList.push_back(con);
+
         ++this->FreeConn;
     }
 

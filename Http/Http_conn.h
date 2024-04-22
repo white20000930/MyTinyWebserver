@@ -11,86 +11,69 @@
 #include <map>
 #include <sys/mman.h>
 #include <sys/uio.h>
-using namespace std;
+
 #include "../CGIMysql/Sql_connection_pool.h"
 #include "../Lock/Lockers.h"
-//  #define edge_TRIGGERED //边缘触发 非阻塞
-#define level_TRIGGERED // 水平触发 阻塞
-
-const char *doc_root = "/home/xgwhite/Templates/MyTinyWebServer/Root";
-
-// some HTTP status information
-const char *ok_200_title = "OK";
-const char *error_400_title = "Bad Request";
-const char *error_400_form = "Your request has bad syntax or is inherently impossible to staisfy.\n";
-const char *error_403_title = "Forbidden";
-const char *error_403_form = "You do not have permission to get file form this server.\n";
-const char *error_404_title = "Not Found";
-const char *error_404_form = "The requested file was not found on this server.\n";
-const char *error_500_title = "Internal Error";
-const char *error_500_form = "There was an unusual problem serving the request file.\n";
-
-static const int FILENAME_LEN = 200;
-static const int READ_BUFFER_SIZE = 2048;
-static const int WRITE_BUFFER_SIZE = 1024;
-
-// a map to store the username and password
-map<string, string> users_map;
-Locker m_lock;
-
-/**
- * @brief HTTP请求方法枚举
- */
-enum METHOD
-{
-    GET = 0, // GET请求
-    POST,    // POST请求
-    HEAD,    // HEAD请求
-    PUT,     // PUT请求
-    DELETE,  // DELETE请求
-    TRACE,   // TRACE请求
-    OPTIONS, // OPTIONS请求
-    CONNECT, // CONNECT请求
-    PATH     // PATH请求
-};
-
-/**
- * @brief HTTP解析状态枚举
- */
-enum CHECK_STATE
-{
-    CHECK_STATE_REQUESTLINE = 0, // 解析请求行状态
-    CHECK_STATE_HEADER,          // 解析请求头状态
-    CHECK_STATE_CONTENT          // 解析请求内容状态
-};
-
-/**
- * @brief HTTP响应状态枚举
- */
-enum HTTP_CODE
-{
-    NO_REQUEST,        // 无请求
-    GET_REQUEST,       // GET请求
-    BAD_REQUEST,       // 错误请求
-    NO_RESOURCE,       // 资源不存在
-    FORBIDDEN_REQUEST, // 禁止访问
-    FILE_REQUEST,      // 文件请求
-    INTERNAL_ERROR,    // 内部错误
-    CLOSED_CONNECTION  // 连接关闭
-};
-
-/**
- * @brief HTTP请求行状态枚举
- */
-enum LINE_STATUS
-{
-    LINE_OK = 0, // 行解析成功
-    LINE_BAD,    // 行解析失败
-    LINE_OPEN    // 行解析未完成
-};
+#include "../Log/Log.h"
 
 class Http_conn
 {
+public:
+    static const int FILENAME_LEN = 200;
+    static const int READ_BUFFER_SIZE = 2048;
+    static const int WRITE_BUFFER_SIZE = 1024;
+
+    /**
+     * @brief HTTP请求方法枚举
+     */
+    enum METHOD
+    {
+        GET = 0, // GET请求
+        POST,    // POST请求
+        HEAD,    // HEAD请求
+        PUT,     // PUT请求
+        DELETE,  // DELETE请求
+        TRACE,   // TRACE请求
+        OPTIONS, // OPTIONS请求
+        CONNECT, // CONNECT请求
+        PATH     // PATH请求
+    };
+
+    /**
+     * @brief HTTP解析状态枚举
+     */
+    enum CHECK_STATE
+    {
+        CHECK_STATE_REQUESTLINE = 0, // 解析请求行状态
+        CHECK_STATE_HEADER,          // 解析请求头状态
+        CHECK_STATE_CONTENT          // 解析请求内容状态
+    };
+
+    /**
+     * @brief HTTP响应状态枚举
+     */
+    enum HTTP_CODE
+    {
+        NO_REQUEST,        // 无请求
+        GET_REQUEST,       // GET请求
+        BAD_REQUEST,       // 错误请求
+        NO_RESOURCE,       // 资源不存在
+        FORBIDDEN_REQUEST, // 禁止访问
+        FILE_REQUEST,      // 文件请求
+        INTERNAL_ERROR,    // 内部错误
+        CLOSED_CONNECTION  // 连接关闭
+    };
+
+    /**
+     * @brief HTTP请求行状态枚举
+     */
+    enum LINE_STATUS
+    {
+        LINE_OK = 0, // 行解析成功
+        LINE_BAD,    // 行解析失败
+        LINE_OPEN    // 行解析未完成
+    };
+
 public:
     Http_conn(){};
     ~Http_conn(){};

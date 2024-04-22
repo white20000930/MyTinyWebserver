@@ -29,9 +29,9 @@ public:
     };
 
     bool wait()
-    { // when m_sem > 0, return true
+    { // when m_sem > 0, m_sem-1, and return true
         return sem_wait(&m_sem) == 0;
-        // when m_sem > 0,  sem_wait return 0
+        // when m_sem > 0,  m_sem-1, and sem_wait return 0
     };
     bool post()
     { // when m_sem + 1 successfully, return true

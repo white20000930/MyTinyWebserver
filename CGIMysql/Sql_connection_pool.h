@@ -5,8 +5,9 @@
 #include <list>
 #include <iostream>
 #include <string>
-using namespace std;
 #include "../Lock/Lockers.h"
+
+using namespace std;
 
 class Connection_pool
 {
@@ -45,7 +46,7 @@ private:
 class ConnectionRAII
 {
 public:
-    ConnectionRAII(MYSQL **SQL, Connection_pool *connPool);
+    ConnectionRAII(MYSQL **con, Connection_pool *connPool);
     ~ConnectionRAII();
 
 private:

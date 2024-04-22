@@ -26,6 +26,8 @@ public:
     Util_timer *next;
 };
 
+
+
 class Sort_timer_lst
 {
 public:
@@ -140,8 +142,8 @@ void Sort_timer_lst::tick()
         return;
     }
     // printf( "timer tick\n" );
-    // LOG_INFO("%s", "timer tick");
-    // Log::get_instance()->flush();
+    LOG_INFO("%s", "timer tick");
+    Log::get_instance()->flush();
     time_t cur = time(NULL);
     Util_timer *tmp = head;
     while (tmp)
