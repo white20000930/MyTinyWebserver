@@ -129,7 +129,7 @@ bool Http_conn::read_once()
 
 #ifdef level_TRIGGERED
     // receive
-    bytes_read = recv(m_epollfd, this->m_read_buf + this->m_read_idx, READ_BUFFER_SIZE - this->m_read_idx, 0);
+    bytes_read = recv(m_sockfd, this->m_read_buf + this->m_read_idx, READ_BUFFER_SIZE - this->m_read_idx, 0);
 
     if (bytes_read <= 0)
     {
@@ -234,12 +234,11 @@ void Http_conn::initmysql_result(Connection_pool *connPool)
     MYSQL *mysql = NULL;
     ConnectionRAII mysqlcon(&mysql, connPool);
 
-    cout << "before mysql_query" << endl;
     if (mysql_query(mysql, "SELECT username,passwd FROM user"))
     {
         LOG_ERROR("SELECT error:%s\n", mysql_error(mysql));
     }
-    cout << "after mysql_query" << endl;
+
     MYSQL_RES *result = mysql_store_result(mysql);
 
     int num_fields = mysql_num_fields(result);

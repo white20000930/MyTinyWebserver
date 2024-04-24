@@ -33,7 +33,6 @@ static int epollfd = 0;          // 定义epoll事件表的文件描述符
 // 信号处理函数
 void sig_handler(int sig)
 {
-    // 为保证函数的可重入性，保留原来的errno
     int save_errno = errno;
     int msg = sig;
     send(pipefd[1], (char *)&msg, 1, 0);
@@ -77,7 +76,6 @@ void show_error(int connfd, const char *info)
 
 int main(int argc, char *argv[])
 {
-    cout << "in main" << endl;
 
 #ifdef ASYNLOG
     Log::get_instance()->init("ServerLog", 2000, 800000, 8); // 异步日志模型
@@ -99,10 +97,8 @@ int main(int argc, char *argv[])
 
     // 创建数据库连接池
     Connection_pool *connPool = Connection_pool::GetInstance();
-    // connPool->init("localhost", "XGWhite", "314159", "yourdb", 3306, 8);
-    cout << "before connPool->init" << endl;
     connPool->init("localhost", "debian-sys-maint", "kU4sRgIR46JSZ8iX", "yourdb", 3306, 8);
-    cout << "after connPool->init" << endl;
+
     // 创建线程池
     Threadpool<Http_conn> *pool = NULL;
     try
@@ -117,17 +113,11 @@ int main(int argc, char *argv[])
     Http_conn *users = new Http_conn[MAX_FD];
     assert(users);
 
-    cout << "before initmysql_result" << endl;
     // 初始化数据库读取表
     users->initmysql_result(connPool);
-    cout << "after initmysql_result" << endl;
 
     int listenfd = socket(PF_INET, SOCK_STREAM, 0);
     assert(listenfd >= 0);
-
-    // struct linger tmp={1,0};
-    // SO_LINGER若有数据待发送，延迟关闭
-    // setsockopt(listenfd,SOL_SOCKET,SO_LINGER,&tmp,sizeof(tmp));
 
     int ret = 0;
     struct sockaddr_in address;
@@ -294,6 +284,7 @@ int main(int argc, char *argv[])
             // 处理客户连接上接收到的数据
             else if (events[i].events & EPOLLIN)
             {
+               
                 Util_timer *timer = users_timer[sockfd].timer;
                 if (users[sockfd].read_once())
                 {

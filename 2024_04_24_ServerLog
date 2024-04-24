@@ -1,0 +1,281 @@
+2024-04-24 19:19:42.865176 [info]: lalallalall 1
+2024-04-24 19:19:42.875512 [info]: else if (events[i].events & EPOLLIN) 1
+2024-04-24 19:19:42.875596 [info]: close fd 16
+2024-04-24 19:19:42.875977 [info]: lalallalall 1
+2024-04-24 19:19:42.876076 [info]: else if (events[i].events & EPOLLIN) 1
+2024-04-24 19:19:42.876117 [info]: close fd 16
+2024-04-24 19:19:42.876463 [info]: lalallalall 1
+2024-04-24 19:19:42.876535 [info]: else if (events[i].events & EPOLLIN) 1
+2024-04-24 19:19:42.876582 [info]: close fd 16
+2024-04-24 19:19:42.876939 [info]: lalallalall 1
+2024-04-24 19:19:42.877015 [info]: else if (events[i].events & EPOLLIN) 1
+2024-04-24 19:19:42.877058 [info]: close fd 16
+2024-04-24 19:19:42.877381 [info]: lalallalall 1
+2024-04-24 19:19:42.877444 [info]: else if (events[i].events & EPOLLIN) 1
+2024-04-24 19:19:42.877510 [info]: close fd 16
+2024-04-24 19:19:42.877814 [info]: lalallalall 1
+2024-04-24 19:19:42.877889 [info]: else if (events[i].events & EPOLLIN) 1
+2024-04-24 19:19:42.877939 [info]: close fd 16
+2024-04-24 19:19:42.878308 [info]: lalallalall 1
+2024-04-24 19:19:42.878376 [info]: else if (events[i].events & EPOLLIN) 1
+2024-04-24 19:19:42.878422 [info]: close fd 16
+2024-04-24 19:19:42.878769 [info]: lalallalall 1
+2024-04-24 19:19:42.878833 [info]: else if (events[i].events & EPOLLIN) 1
+2024-04-24 19:19:42.878878 [info]: close fd 16
+2024-04-24 19:19:42.879356 [info]: lalallalall 1
+2024-04-24 19:19:42.879492 [info]: else if (events[i].events & EPOLLIN) 1
+2024-04-24 19:19:42.879534 [info]: close fd 16
+2024-04-24 19:19:42.880001 [info]: lalallalall 1
+2024-04-24 19:19:42.880032 [info]: else if (events[i].events & EPOLLIN) 1
+2024-04-24 19:19:42.880081 [info]: close fd 16
+2024-04-24 19:19:45.743773 [info]: lalallalall 1
+2024-04-24 19:19:45.758039 [info]: else if (events[i].events & EPOLLIN) 1
+2024-04-24 19:19:45.758206 [info]: close fd 16
+2024-04-24 19:19:45.759063 [info]: lalallalall 1
+2024-04-24 19:19:45.759252 [info]: else if (events[i].events & EPOLLIN) 1
+2024-04-24 19:19:45.759369 [info]: close fd 16
+2024-04-24 19:19:45.760143 [info]: lalallalall 1
+2024-04-24 19:19:45.760289 [info]: else if (events[i].events & EPOLLIN) 1
+2024-04-24 19:19:45.760394 [info]: close fd 16
+2024-04-24 19:19:45.761080 [info]: lalallalall 1
+2024-04-24 19:19:45.761238 [info]: else if (events[i].events & EPOLLIN) 1
+2024-04-24 19:19:45.761343 [info]: close fd 16
+2024-04-24 19:19:45.762100 [info]: lalallalall 1
+2024-04-24 19:19:45.762246 [info]: else if (events[i].events & EPOLLIN) 1
+2024-04-24 19:19:45.762348 [info]: close fd 16
+2024-04-24 19:19:45.762965 [info]: lalallalall 1
+2024-04-24 19:19:45.763130 [info]: else if (events[i].events & EPOLLIN) 1
+2024-04-24 19:19:45.763234 [info]: close fd 16
+2024-04-24 19:19:45.763909 [info]: lalallalall 1
+2024-04-24 19:19:45.764082 [info]: else if (events[i].events & EPOLLIN) 1
+2024-04-24 19:19:45.764236 [info]: close fd 16
+2024-04-24 19:19:45.764920 [info]: lalallalall 1
+2024-04-24 19:19:45.765018 [info]: else if (events[i].events & EPOLLIN) 1
+2024-04-24 19:19:45.765143 [info]: close fd 16
+2024-04-24 19:19:45.765761 [info]: lalallalall 1
+2024-04-24 19:19:45.765836 [info]: else if (events[i].events & EPOLLIN) 1
+2024-04-24 19:19:45.765917 [info]: close fd 16
+2024-04-24 19:19:45.766603 [info]: lalallalall 1
+2024-04-24 19:19:45.766697 [info]: else if (events[i].events & EPOLLIN) 1
+2024-04-24 19:19:45.766789 [info]: close fd 16
+2024-04-24 19:23:39.889659 [info]: lalallalall 1
+2024-04-24 19:23:40.215789 [info]: timer tick
+2024-04-24 19:23:44.938484 [info]: close fd 16
+2024-04-24 19:23:50.251386 [info]: lalallalall 1
+2024-04-24 19:23:50.257844 [info]: else if (events[i].events & EPOLLIN) 1
+2024-04-24 19:23:50.257879 [info]: deal with the client(127.0.0.1)
+2024-04-24 19:23:50.257994 [info]: GET / HTTP/1.1
+2024-04-24 19:23:50.258022 [info]: Host: localhost:9006
+2024-04-24 19:23:50.258036 [info]: User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0
+2024-04-24 19:23:50.258093 [info]: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+2024-04-24 19:23:50.258118 [info]: Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+2024-04-24 19:23:50.258151 [info]: Accept-Encoding: gzip, deflate, br
+2024-04-24 19:23:50.258170 [info]: Connection: keep-alive
+2024-04-24 19:23:50.258183 [info]: Upgrade-Insecure-Requests: 1
+2024-04-24 19:23:50.258197 [info]: Sec-Fetch-Dest: document
+2024-04-24 19:23:50.258214 [info]: Sec-Fetch-Mode: navigate
+2024-04-24 19:23:50.258245 [info]: Sec-Fetch-Site: none
+2024-04-24 19:23:50.258265 [info]: Sec-Fetch-User: ?1
+2024-04-24 19:23:50.258283 [info]: 
+2024-04-24 19:23:50.258327 [info]: request:HTTP/1.1 200 OK
+
+2024-04-24 19:23:50.258347 [info]: request:HTTP/1.1 200 OK
+Content-Length: 586
+
+2024-04-24 19:23:50.258362 [info]: request:HTTP/1.1 200 OK
+Content-Length: 586
+Connection: keep-alive
+
+2024-04-24 19:23:50.258376 [info]: request:HTTP/1.1 200 OK
+Content-Length: 586
+Connection: keep-alive
+
+
+2024-04-24 19:23:50.258399 [info]: adjust timer once
+2024-04-24 19:23:50.258471 [info]: send data to the client(127.0.0.1)
+2024-04-24 19:23:50.258490 [info]: adjust timer once
+2024-04-24 19:23:51.964683 [info]: else if (events[i].events & EPOLLIN) 1
+2024-04-24 19:23:51.964712 [info]: deal with the client(127.0.0.1)
+2024-04-24 19:23:51.964756 [info]: adjust timer once
+2024-04-24 19:23:51.964825 [info]: POST /0 HTTP/1.1
+2024-04-24 19:23:51.964859 [info]: Host: localhost:9006
+2024-04-24 19:23:51.964875 [info]: User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0
+2024-04-24 19:23:51.964901 [info]: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+2024-04-24 19:23:51.964920 [info]: Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+2024-04-24 19:23:51.964937 [info]: Accept-Encoding: gzip, deflate, br
+2024-04-24 19:23:51.964953 [info]: Content-Type: application/x-www-form-urlencoded
+2024-04-24 19:23:51.964970 [info]: Content-Length: 0
+2024-04-24 19:23:51.964983 [info]: Origin: http://localhost:9006
+2024-04-24 19:23:51.964999 [info]: Connection: keep-alive
+2024-04-24 19:23:51.965013 [info]: Referer: http://localhost:9006/
+2024-04-24 19:23:51.965030 [info]: Upgrade-Insecure-Requests: 1
+2024-04-24 19:23:51.965047 [info]: Sec-Fetch-Dest: document
+2024-04-24 19:23:51.965061 [info]: Sec-Fetch-Mode: navigate
+2024-04-24 19:23:51.965079 [info]: Sec-Fetch-Site: same-origin
+2024-04-24 19:23:51.965098 [info]: Sec-Fetch-User: ?1
+2024-04-24 19:23:51.965115 [info]: 
+2024-04-24 19:23:51.965154 [info]: request:HTTP/1.1 200 OK
+
+2024-04-24 19:23:51.965176 [info]: request:HTTP/1.1 200 OK
+Content-Length: 696
+
+2024-04-24 19:23:51.965190 [info]: request:HTTP/1.1 200 OK
+Content-Length: 696
+Connection: keep-alive
+
+2024-04-24 19:23:51.965203 [info]: request:HTTP/1.1 200 OK
+Content-Length: 696
+Connection: keep-alive
+
+
+2024-04-24 19:23:51.965288 [info]: send data to the client(127.0.0.1)
+2024-04-24 19:23:51.965305 [info]: adjust timer once
+2024-04-24 19:23:55.216088 [info]: timer tick
+2024-04-24 19:23:57.797089 [info]: else if (events[i].events & EPOLLIN) 1
+2024-04-24 19:23:57.797121 [info]: deal with the client(127.0.0.1)
+2024-04-24 19:23:57.797217 [info]: POST /3CGISQL.cgi HTTP/1.1
+2024-04-24 19:23:57.797242 [info]: Host: localhost:9006
+2024-04-24 19:23:57.797258 [info]: User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0
+2024-04-24 19:23:57.797285 [info]: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+2024-04-24 19:23:57.797306 [info]: Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+2024-04-24 19:23:57.797322 [info]: Accept-Encoding: gzip, deflate, br
+2024-04-24 19:23:57.797337 [info]: Content-Type: application/x-www-form-urlencoded
+2024-04-24 19:23:57.797356 [info]: Content-Length: 18
+2024-04-24 19:23:57.797370 [info]: Origin: http://localhost:9006
+2024-04-24 19:23:57.797386 [info]: Connection: keep-alive
+2024-04-24 19:23:57.797400 [info]: Referer: http://localhost:9006/0
+2024-04-24 19:23:57.797414 [info]: Upgrade-Insecure-Requests: 1
+2024-04-24 19:23:57.797441 [info]: Sec-Fetch-Dest: document
+2024-04-24 19:23:57.797454 [info]: Sec-Fetch-Mode: navigate
+2024-04-24 19:23:57.797467 [info]: Sec-Fetch-Site: same-origin
+2024-04-24 19:23:57.797480 [info]: Sec-Fetch-User: ?1
+2024-04-24 19:23:57.797492 [info]: 
+2024-04-24 19:23:57.797504 [info]: user=1&password=21
+2024-04-24 19:23:57.797538 [info]: adjust timer once
+2024-04-24 19:23:57.803293 [info]: request:HTTP/1.1 200 OK
+
+2024-04-24 19:23:57.803341 [info]: request:HTTP/1.1 200 OK
+Content-Length: 695
+
+2024-04-24 19:23:57.803356 [info]: request:HTTP/1.1 200 OK
+Content-Length: 695
+Connection: keep-alive
+
+2024-04-24 19:23:57.803367 [info]: request:HTTP/1.1 200 OK
+Content-Length: 695
+Connection: keep-alive
+
+
+2024-04-24 19:23:57.803453 [info]: send data to the client(127.0.0.1)
+2024-04-24 19:23:57.803473 [info]: adjust timer once
+2024-04-24 19:24:00.216158 [info]: timer tick
+2024-04-24 19:24:05.216225 [info]: timer tick
+2024-04-24 19:24:05.596140 [info]: else if (events[i].events & EPOLLIN) 1
+2024-04-24 19:24:05.596175 [info]: deal with the client(127.0.0.1)
+2024-04-24 19:24:05.596216 [info]: adjust timer once
+2024-04-24 19:24:05.596264 [info]: POST /2CGISQL.cgi HTTP/1.1
+2024-04-24 19:24:05.596285 [info]: Host: localhost:9006
+2024-04-24 19:24:05.596294 [info]: User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0
+2024-04-24 19:24:05.596314 [info]: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+2024-04-24 19:24:05.596327 [info]: Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+2024-04-24 19:24:05.596344 [info]: Accept-Encoding: gzip, deflate, br
+2024-04-24 19:24:05.596358 [info]: Content-Type: application/x-www-form-urlencoded
+2024-04-24 19:24:05.596373 [info]: Content-Length: 18
+2024-04-24 19:24:05.596386 [info]: Origin: http://localhost:9006
+2024-04-24 19:24:05.596401 [info]: Connection: keep-alive
+2024-04-24 19:24:05.596415 [info]: Referer: http://localhost:9006/3CGISQL.cgi
+2024-04-24 19:24:05.596431 [info]: Upgrade-Insecure-Requests: 1
+2024-04-24 19:24:05.596445 [info]: Sec-Fetch-Dest: document
+2024-04-24 19:24:05.596461 [info]: Sec-Fetch-Mode: navigate
+2024-04-24 19:24:05.596477 [info]: Sec-Fetch-Site: same-origin
+2024-04-24 19:24:05.596493 [info]: Sec-Fetch-User: ?1
+2024-04-24 19:24:05.596510 [info]: 
+2024-04-24 19:24:05.596521 [info]: user=1&password=21
+2024-04-24 19:24:05.596551 [info]: request:HTTP/1.1 200 OK
+
+2024-04-24 19:24:05.596564 [info]: request:HTTP/1.1 200 OK
+Content-Length: 723
+
+2024-04-24 19:24:05.596571 [info]: request:HTTP/1.1 200 OK
+Content-Length: 723
+Connection: keep-alive
+
+2024-04-24 19:24:05.596578 [info]: request:HTTP/1.1 200 OK
+Content-Length: 723
+Connection: keep-alive
+
+
+2024-04-24 19:24:05.596630 [info]: send data to the client(127.0.0.1)
+2024-04-24 19:24:05.596645 [info]: adjust timer once
+2024-04-24 19:24:06.779469 [info]: else if (events[i].events & EPOLLIN) 1
+2024-04-24 19:24:06.779499 [info]: deal with the client(127.0.0.1)
+2024-04-24 19:24:06.779535 [info]: adjust timer once
+2024-04-24 19:24:06.779598 [info]: POST /5 HTTP/1.1
+2024-04-24 19:24:06.779635 [info]: Host: localhost:9006
+2024-04-24 19:24:06.779653 [info]: User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0
+2024-04-24 19:24:06.779675 [info]: Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8
+2024-04-24 19:24:06.779696 [info]: Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+2024-04-24 19:24:06.779714 [info]: Accept-Encoding: gzip, deflate, br
+2024-04-24 19:24:06.779728 [info]: Content-Type: application/x-www-form-urlencoded
+2024-04-24 19:24:06.779738 [info]: Content-Length: 0
+2024-04-24 19:24:06.779746 [info]: Origin: http://localhost:9006
+2024-04-24 19:24:06.779756 [info]: Connection: keep-alive
+2024-04-24 19:24:06.779764 [info]: Referer: http://localhost:9006/2CGISQL.cgi
+2024-04-24 19:24:06.779773 [info]: Upgrade-Insecure-Requests: 1
+2024-04-24 19:24:06.779783 [info]: Sec-Fetch-Dest: document
+2024-04-24 19:24:06.779804 [info]: Sec-Fetch-Mode: navigate
+2024-04-24 19:24:06.779820 [info]: Sec-Fetch-Site: same-origin
+2024-04-24 19:24:06.779835 [info]: Sec-Fetch-User: ?1
+2024-04-24 19:24:06.779846 [info]: 
+2024-04-24 19:24:06.779874 [info]: request:HTTP/1.1 200 OK
+
+2024-04-24 19:24:06.779889 [info]: request:HTTP/1.1 200 OK
+Content-Length: 360
+
+2024-04-24 19:24:06.779898 [info]: request:HTTP/1.1 200 OK
+Content-Length: 360
+Connection: keep-alive
+
+2024-04-24 19:24:06.779905 [info]: request:HTTP/1.1 200 OK
+Content-Length: 360
+Connection: keep-alive
+
+
+2024-04-24 19:24:06.779968 [info]: send data to the client(127.0.0.1)
+2024-04-24 19:24:06.779992 [info]: adjust timer once
+2024-04-24 19:24:06.798957 [info]: else if (events[i].events & EPOLLIN) 1
+2024-04-24 19:24:06.799014 [info]: deal with the client(127.0.0.1)
+2024-04-24 19:24:06.799080 [info]: adjust timer once
+2024-04-24 19:24:06.799224 [info]: GET /xxx.jpg HTTP/1.1
+2024-04-24 19:24:06.799261 [info]: Host: localhost:9006
+2024-04-24 19:24:06.799274 [info]: User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:125.0) Gecko/20100101 Firefox/125.0
+2024-04-24 19:24:06.799301 [info]: Accept: image/avif,image/webp,*/*
+2024-04-24 19:24:06.799316 [info]: Accept-Language: zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2
+2024-04-24 19:24:06.799334 [info]: Accept-Encoding: gzip, deflate, br
+2024-04-24 19:24:06.799349 [info]: Connection: keep-alive
+2024-04-24 19:24:06.799360 [info]: Referer: http://localhost:9006/5
+2024-04-24 19:24:06.799374 [info]: Sec-Fetch-Dest: image
+2024-04-24 19:24:06.799386 [info]: Sec-Fetch-Mode: no-cors
+2024-04-24 19:24:06.799398 [info]: Sec-Fetch-Site: same-origin
+2024-04-24 19:24:06.799409 [info]: 
+2024-04-24 19:24:06.799445 [info]: request:HTTP/1.1 200 OK
+
+2024-04-24 19:24:06.799463 [info]: request:HTTP/1.1 200 OK
+Content-Length: 6007312
+
+2024-04-24 19:24:06.799473 [info]: request:HTTP/1.1 200 OK
+Content-Length: 6007312
+Connection: keep-alive
+
+2024-04-24 19:24:06.799483 [info]: request:HTTP/1.1 200 OK
+Content-Length: 6007312
+Connection: keep-alive
+
+
+2024-04-24 19:24:06.806394 [info]: send data to the client(127.0.0.1)
+2024-04-24 19:24:06.806454 [info]: adjust timer once
+2024-04-24 19:24:10.216321 [info]: timer tick
+2024-04-24 19:24:15.216528 [info]: timer tick
+2024-04-24 19:24:20.216793 [info]: timer tick
+2024-04-24 19:24:25.217336 [info]: timer tick
+2024-04-24 19:24:25.217436 [info]: close fd 16
